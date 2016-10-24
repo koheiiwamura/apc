@@ -14,3 +14,14 @@
 
 # Ignore sample view.
 /interface_sample
+
+# Ignore dumpfile.
+/mysql_dump.sql
+
+# Ignore schemafile.
+/db/schema.rb
+/mysql
+
+
+
+
