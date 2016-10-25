@@ -36,30 +36,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>ユーザ名</td>
-          <td>販売日</td>
-          <td>販売顧客</td>
-          <td>販売種別</td>
-          <td>販売店名</td>
-          <td><a href="#">編集</a></td>
-        </tr>
-        <tr>
-          <td>ユーザ名</td>
-          <td>販売日</td>
-          <td>販売顧客</td>
-          <td>販売種別</td>
-          <td>販売店名</td>
-          <td><a href="#">編集</a></td>
-        </tr>
-        <tr>
-          <td>ユーザ名</td>
-          <td>販売日</td>
-          <td>販売顧客</td>
-          <td>販売種別</td>
-          <td>販売店名</td>
-          <td><a href="#">編集</a></td>
-        </tr>
+        <% @sales.each do |sale| %>
+          <tr>
+            <td>ユーザ名</td>
+            <td>販売日</td>
+            <td>販売顧客</td>
+            <td>販売種別</td>
+            <td>販売店名</td>
+            <td><%= link_to "編集", edit_sale_path(sale) %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
