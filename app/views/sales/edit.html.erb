@@ -20,33 +20,34 @@
   <div class="container">
 
   <form class="well form-search">
-  <label for="name">商品：</label>
-  <select name="name">
-    <option value="1"/> 
-  </select>
-  <br/>
+  <%= form_for(@sale, class:"well form-search") do |f| %>
+    <label for="name">商品：</label>
+    <select name="name">
+      <option value="1"/> 
+    </select>
+    <br/>
 
-  <label for="sell">販売店：</label>
-  <select name="sell">
-    <option value="1"/>
-  </select>
-  <br/>
+    <label for="sell">販売店：</label>
+    <select name="sell">
+      <option value="1"/>
+    </select>
+    <br/>
 
-  <label for="date">発生ポイント：</label>
-  <input type="text" name="date"/>
-  <br/>
+    <label for="date">発生ポイント：</label>
+    <input type="text" name="date"/>
+    <br/>
 
-  <label for="date">商品単価：</label>
-  <input type="text" name="date"/>
-  <br/>
+    <label for="date">商品単価：</label>
+    <input type="text" name="date"/>
+    <br/>
 
-  <label>商品画像<br/>
-  <img src="sss" width="100px" height="100px"　alt="商品画像">
-  </label>
-  <br/>
+    <label>商品画像<br/>
+    <img src="sss" width="100px" height="100px"　alt="商品画像">
+    </label>
+    <br/>
 
-  <div align="right"><button type="submit" class="btn">確定</button></div>
-  </form>
+    <div align="right"><button type="submit" class="btn">確定</button></div>
+  <% end %>
 
 
   </div>
