@@ -1,0 +1,52 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "ポイント管理システム", root_path, class:"brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to "販売一覧", sales_path %></li>
+          <li><a href="#about">販売追加</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+    <form class="well form-search">
+      <label for="query">ユーザ名検索：</label><input name="query" type="text" class="input-medium search-query"/>
+      <button type="submit" class="btn">検索</button>
+      <button type="submit" class="btn">追加</button>
+    </form>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>ユーザ名</th>
+          <th>販売日</th>
+          <th>販売顧客</th>
+          <th>販売種別</th>
+          <th>販売店名</th>
+          <th>編集</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sales.each do |sale| %>
+          <tr>
+            <td>ユーザ名</td>
+            <td><%= sale.sale_date %></td>
+            <td>販売顧客</td>
+            <td>販売種別</td>
+            <td>販売店名</td>
+            <td><%= link_to "編集", edit_sale_path(sale) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

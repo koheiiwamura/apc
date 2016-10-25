@@ -1,0 +1,53 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "ポイント管理システム", root_path, class:"brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "販売一覧", sales_path %></li>
+          <li class="active"><a href="#">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+  <form class="well form-search">
+  <label for="name">商品：</label>
+  <select name="name">
+    <option value="1"/> 
+  </select>
+  <br/>
+
+  <label for="sell">販売店：</label>
+  <select name="sell">
+    <option value="1"/>
+  </select>
+  <br/>
+
+  <label for="date">発生ポイント：</label>
+  <input type="text" name="date"/>
+  <br/>
+
+  <label for="date">商品単価：</label>
+  <input type="text" name="date"/>
+  <br/>
+
+  <label>商品画像<br/>
+  <img src="sss" width="100px" height="100px"　alt="商品画像">
+  </label>
+  <br/>
+
+  <div align="right"><button type="submit" class="btn">確定</button></div>
+  </form>
+
+
+  </div>
+</div> <!-- /container -->

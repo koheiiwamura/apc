@@ -18,8 +18,7 @@
 # Ignore dumpfile.
 /mysql_dump.sql
 
-# Ignore schemafile.
-/db/schema.rb
+# Ignore mysql.
 /mysql
 
 
