@@ -9,8 +9,8 @@
       <%= link_to "ポイント管理システム", root_path, class:"brand" %>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="active"><a href="#">販売一覧</a></li>
-          <li><a href="#about">About</a></li>
+          <li class="active"><%= link_to "販売一覧", sales_path %></li>
+          <li><a href="#about">販売追加</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -39,7 +39,7 @@
         <% @sales.each do |sale| %>
           <tr>
             <td>ユーザ名</td>
-            <td>販売日</td>
+            <td><%= sale.sale_date %></td>
             <td>販売顧客</td>
             <td>販売種別</td>
             <td>販売店名</td>
