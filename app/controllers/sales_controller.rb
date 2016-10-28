@@ -3,10 +3,15 @@ class SalesController < ApplicationController
   before_action :set_sale_detail, only: [:edit, :update]
   before_action :set_goods, only: [:edit, :update]
   def new
-    @sale_details = SaleDetail.all
+    @sale = Sale.new
+    @sale_detail = SaleDetail.new(id: @sale.id)
+    @sale_details = SaleDetail.all.includes(:good, :store)
+    @users = User.all
+    @stores = Store.all
+    @goods = Good.all
   end
   def index
-    @sales = Sale.all
+    @sales = Sale.all.includes(:user, :store)
   end
 
   def edit
@@ -27,7 +32,7 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
   end
   def set_sale_detail
-    @sale_detail = SaleDetail.find_by(sales_id: @sale.id)
+    @sale_detail = SaleDetail.includes(:good).find_by(sales_id: @sale.id)
   end
   def set_goods
     @good = Good.find_by(goods_id: @sale_detail.id)

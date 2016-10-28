@@ -8,7 +8,7 @@ class Sales::SearchController < ApplicationController
     if params[:word].present?
       @users = User.where('username LIKE(?)',"%#{params[:word]}%")
     else
-      @users = User.all
+      @users = User.all.includes(:store)
     end
   end
 end
