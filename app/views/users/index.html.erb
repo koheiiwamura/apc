@@ -1,0 +1,64 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="2-1-0.html">ポイント管理システム</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "販売一覧", sales_path %></li>
+          <li><%= link_to "販売追加", new_sale_path %></li>
+          <li class="active"><%= link_to "ユーザー覧", users_path %></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+    <form class="well form-search">
+    <label for="name">会員名：</label>
+    <input type="text" name="name"/>
+    <br/>
+
+    <label for="name">ポイント下限：</label>
+    <input type="text" name="name"/>
+
+    <label for="name">　～　ポイント上限：</label>
+    <input type="text" name="name"/>
+
+    <button type="submit" class="btn">検索</button>
+    </form>
+
+      
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>会員名</th>
+          <th>販売店名</th>
+          <th>最終販売日</th>
+          <th>ポイント</th>
+          <th>免許情報</th>
+          <th>修正変更</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <% sale = user.sales.order('sale_date DESC').first %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= user.store.storename %></td>
+            <td><%= sale.sale_date %></td>
+            <td>ポイント</td>
+            <td><button type="submit" class="btn">免許情報</button></td>
+            <td><button type="submit" class="btn">修正変更</button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+  </div>
+</div> <!-- /container -->
