@@ -18,7 +18,7 @@
   </div>
 
   <div class="container">
-    <%= form_tag(sales_search_path, method: :get, class:"well form-search") do %>
+    <%= form_tag(sales_search_path, method: :get, class:"well form-search") do%>
       <label for="word">ユーザ名検索：</label>
       <%= text_field "", :word, class:"input-medium search-query" %>
       <%= submit_tag "検索", class:"btn" %>
@@ -36,17 +36,18 @@
         </tr>
       </thead>
       <tbody>
-        <% @sales.each do |sale| %>
-          <tr>
-            <td><%= sale.user.username %></td>
-            <td><%= sale.sale_date %></td>
-            <td><%= sale.sale_kind %></td>
-            <td><%= sale.store.storename if sale.store %></td>
-            <td><%= link_to "編集", edit_sale_path(sale) %></td>
-          </tr>
+        <% @users.each do |user| %>
+          <% user.sales.includes(:store).each do |sale| %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= sale.sale_date %></td>
+              <td><%= sale.sale_kind %></td>
+              <td><%= sale.store.storename if sale.store %></td>
+              <td><%= link_to "編集", edit_sale_path(sale) %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
-
