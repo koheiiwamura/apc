@@ -11,7 +11,7 @@
         <ul class="nav">
           <li class="active"><%= link_to "販売一覧", sales_path %></li>
           <li><%= link_to "販売追加", new_sale_path %></li>
-          <li><%= link_to "ユーザー覧", new_sale_path %></li>
+          <li><%= link_to "ユーザー覧", users_path %></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -37,7 +37,7 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <% user.sales.each do |sale| %>
+          <% user.sales.includes(:store).each do |sale| %>
             <tr>
               <td><%= user.username %></td>
               <td><%= sale.sale_date %></td>

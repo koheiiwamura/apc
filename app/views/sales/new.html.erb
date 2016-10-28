@@ -11,50 +11,70 @@
         <ul class="nav">
           <li><%= link_to "販売一覧", sales_path %></li>
           <li class="active"><a href="#">販売追加</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><%= link_to "ユーザー覧", users_path %></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </div>
 
   <div class="container">
+    <%= form_for(@sale, html: {class:"well form-search"}) do |f| %>
+      <label for="username">顧客名：</label>
+      <%= select_tag 'username', options_from_collection_for_select(@users, :username, :username), prompt:"ユーザー名を選択" %>
+      <label for="sell">販売店：</label>
+      <%= select_tag 'storename', options_from_collection_for_select(@stores, :storename, :storename), prompt:"店舗名を選択" %>
+      <label for="date">販売日：</label>
+      <%= date_field :date, "" %>
+      <a class="btn", id="js-btn", onclick="hyoji1(0)">販売詳細</a>
 
-  <form class="well form-search">
-  <label for="name">顧客名：</label>
-  <select name="name">
-    <option value="1"/>
-  </select>
-  <label for="sell">販売店：</label>
-  <select name="sell">
-    <option value="1"/>
-  </select>
-  <label for="date">販売日：</label>
-  <input type="text" name="date"/>
-  <button type="submit" class="btn">販売詳細</button>
-  </form>
+      <!-- js-form -->
+      <div id="loginModal", class="js-form-fail">
+        <label for="good">商品：</label>
+        <%= select_tag 'goods_name', options_from_collection_for_select(@goods, :goods_name, :goods_name), prompt:"商品名を選択"  %>
+        <br/>
 
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>販売店</th>
-        <th>発生ポイント</th>
-        <th>商品単価</th>
-        <th>商品画像</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @sale_details.each do |sale_detail| %>
-      <tr>
-        <td><%= sale_detail.good.goods_name %></td>
-        <td><%= sale_detail.store.storename if sale_detail.store %></td>
-        <td><%= sale_detail.sale_point %></td>
-        <td><%= sale_detail.sale_price %></td>
-        <td><%= sale_detail.good.goods_picture %></td>
-      </tr>
+        <label for="date">発生ポイント：</label>
+        <%= text_field_tag "sale_point", @sale_detail.sale_point %>
+        <br/>
+
+        <label for="date">商品単価：</label>
+        <%= text_field_tag "sale_price",@sale_detail.sale_price %>
+        <br/>
+
+        <label>商品画像<br/>
+            <%= file_field :goods_picture,"", width:"100px", height:"100px", alt:"" %>
+        </label>
+        <br/>
+
+        <div align="right">
+          <%= f.submit "確定", class:"btn" %>
+        </div>
+      </div>
+      <!--/js-form -->
+
     <% end %>
-    </tbody>
-  </table>
-  <div align="right"><button type="submit" class="btn">確定登録</button></div>
-  </div> <!-- /container -->
-</div>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>販売店</th>
+          <th>発生ポイント</th>
+          <th>商品単価</th>
+          <th>商品画像</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @sale_details.each do |sale_detail| %>
+        <tr>
+          <td><%= sale_detail.good.goods_name %></td>
+          <td><%= sale_detail.store.storename if sale_detail.store %></td>
+          <td><%= sale_detail.sale_point %></td>
+          <td><%= sale_detail.sale_price %></td>
+          <td><%= sale_detail.good.goods_picture %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <div align="right"><button class="btn">確定登録</button></div>
+</div> <!-- /container -->
